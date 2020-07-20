@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { ProductComponent } from './sale/products/product.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
