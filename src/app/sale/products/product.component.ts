@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ProductService } from './product.service';
 
 @Component({
     selector: 'baas-product',
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
 })
   
 export class ProductComponent {
-    description = "PIZZA BLOCOLIS"
+    description = "PIZZA BLOCOLIS";
 }

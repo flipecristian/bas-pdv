@@ -1,0 +1,33 @@
+version: '3.7'
+
+services:
+    app.basspdv.dev:
+        container_name: app.basspdv.dev
+        build:
+            context: ./
+            dockerfile: Dockerfile 
+        volumes: 
+            - ./:/app
+        ports:
+            - "4200:4200"
+        networks:
+            - basssolution
+
+    app.basspdv.mongo.dev:
+        container_name: app.basspdv.mongo.dev
+        image: mongo:4.0
+        environment:
+            TZ: America/Sao_Paulo
+        volumes:
+            - basspdv.mongo:/data/db
+        ports:
+            - "27077:27017"
+        networks:
+            - basssolution
+
+volumes:
+    basspdv.mongo:
+
+networks:
+    basssolution:
+        external: true
