@@ -8,5 +8,6 @@ import { ProductService } from './product.service';
 })
   
 export class ProductComponent {
+    constructor (private productService: ProductService) {}
     description = "PIZZA BLOCOLIS";
 }
