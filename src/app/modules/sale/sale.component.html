@@ -1,0 +1,11 @@
+<div class="row">
+    <div class="col-12">
+        <div class="text-center mt-2">
+            <input #inputProduct type="number"> <button (click)="getProduct(inputProduct.value)">Search</button>
+        </div>
+    </div>
+</div>
+
+<h2 *ngIf="!!idProduct"> {{ idProduct }} </h2>
+<bas-product-description [description]="productDescripton"></bas-product-description>
+<bas-product-price [price]="productPrice"></bas-product-price>
