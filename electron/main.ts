@@ -36,3 +36,10 @@ ipcMain.on('getFiles', (event, arg) => {
   const files = fs.readdirSync(__dirname);
   win.webContents.send('getFilesResponse', files);
 });
+
+/**
+ * Products
+ */
+ipcMain.on('getProduct', (event, arg) => {
+  
+});
