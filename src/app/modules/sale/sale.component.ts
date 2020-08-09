@@ -12,7 +12,7 @@ export class SaleComponent {
 
     constructor(private fileService: FileService) {}
 
-    getProduct(id: number) {
+    getProduct(id: number) : void {
         if (id == 50) {
             this.productId = id;
             this.productDescripton = 'Pizza de Mussarela';

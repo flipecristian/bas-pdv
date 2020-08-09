@@ -1,90 +1,49 @@
 <div class="container-fluid" style="background-color: silver">
-    <header class="row p-1">
-        <div class="col-2">
-            <button type="button" class="btn btn-primary">Abertura de Caixa</button>
-        </div>
-        <div class="col-2">
-            <button type="button" class="btn btn-primary">Fechamento de Caixa</button>
-        </div>
-        <div class="col-2">
-            <button type="button" class="btn btn-primary">Sangria</button>
-        </div>
-        <div class="col-2">
-            <button type="button" class="btn btn-primary">Venda Balcão</button>
-        </div>
-        <div class="col-2">
-            <button type="button" class="btn btn-primary">Venda Delivery</button>
-        </div>
-        <div class="col-2">
-            <h1> BASPDV</h1>
-        </div>
-    </header>
+    <bas-header></bas-header>
     <div class="row mt-5">
+        <!-- Sale  -->
         <div role="main" class="col-md-8">
             <form>
+                <!-- Product Id and Description -->
                 <div class="form-group row">
                     <div class="col-4">
-                        <label for="inputsm">Código do Produto</label>
-                        <input class="form-control input-sm" id="inputsm" type="text">
+                        <bas-input id="bas-product-id" type="text" label="Código do Produto" autofocus="true"></bas-input>
                     </div>
                     <div class="col-6">
-                        <label for="inputsm">Descrição</label>
-                        <input class="form-control input-sm" id="inputsm" type="text">
+                        <bas-input id="bas-product-description" type="text" label="Descrição" disabled="true"></bas-input>
                     </div>
                 </div>
+                <!-- End Product Id and Description -->
+
+                <!-- Qtd. Unit Value Total -->
                 <div class="form-group row">
                     <div class="col-3">
-                        <label for="inputsm">Quantidade</label>
-                        <input class="form-control input-sm" id="inputsm" type="text">
+                        <bas-input id="bas-product-quantity" type="text" label="Quantidade"></bas-input>
                     </div>
                     <div class="col-4">
-                        <label for="inputsm">Valor da Unidade</label>
-                        <input class="form-control input-sm" id="inputsm" type="text">
+                        <bas-input id="bas-product-unit-value" type="text" label="Valor da Unidade" disabled="true"></bas-input>
                     </div>
                     <div class="col-5">
-                        <label for="inputsm">Total</label>
-                        <input class="form-control input-sm" id="inputsm" type="text">
+                        <bas-input id="bas-product-total-value" type="text" label="Valor Total" disabled="true"></bas-input>
                     </div>
                 </div>
+                <!-- End Qtd. Unit Value Total -->
+
+                <!-- Sub Total -->
                 <div class="form-group row">
                     <div class="col-5">
-                        <label for="inputsm">Sub. Total</label>
-                        <input class="form-control input-sm" id="inputsm" type="text">
+                        <bas-input id="bas-product-sub-total" type="text" label="Sub. Total" disabled="true"></bas-input>
                     </div>
                 </div>
+                <!-- End Sub Total -->
             </form>
         </div>
+        <!-- End Sale -->
+
+        <!--  Coupon  -->
         <aside role="complementary" class="col-md-4">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
-                </tbody>
-            </table>
+            <bas-coupon></bas-coupon>
         </aside>
+        <!-- End Coupon  -->
     </div>
 </div>
