@@ -8,8 +8,8 @@ services:
             dockerfile: Dockerfile 
         volumes: 
             - ./:/app
-        #ports:
-        #    - "4200:4200"
+#        ports:
+#            - "4200:4200"
         networks:
             - bassolution
 

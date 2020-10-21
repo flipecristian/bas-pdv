@@ -4,7 +4,7 @@ import { IpcRenderer } from 'electron'
 @Injectable({
   providedIn: 'root',
 })
-export class FileService {
+export class ProductService {
   private ipc: IpcRenderer
 
   constructor() {
@@ -19,12 +19,8 @@ export class FileService {
     }
   }
 
-  async getFiles() {
-    return new Promise<string[]>((resolve, reject) => {
-      this.ipc.once("getFilesResponse", (event, arg) => {
-        resolve(arg);
-      });
-      this.ipc.send("getFiles");
-    });
+  getProduct(id: number) : void {
+    this.ipc.send('message', id);
   }
+
 }

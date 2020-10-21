@@ -1,4 +1,4 @@
-<div class="container-fluid" style="background-color: silver">
+<div class="container-fluid h-100" id="bas-sale-container">
     <bas-header></bas-header>
     <div class="row mt-5">
         <!-- Sale  -->
@@ -7,7 +7,7 @@
                 <!-- Product Id and Description -->
                 <div class="form-group row">
                     <div class="col-4">
-                        <bas-input id="bas-product-id" type="text" label="Código do Produto" autofocus="true"></bas-input>
+                        <bas-input id="bas-product-id" type="text" label="Código do Produto" autofocus="true" (keyup.enter)="onEnter($event)"></bas-input>
                     </div>
                     <div class="col-6">
                         <bas-input id="bas-product-description" type="text" label="Descrição" disabled="true"></bas-input>

@@ -1,11 +1,12 @@
 import { app, BrowserWindow, ipcMain } from 'electron';
-import * as fs from 'fs';
 import * as path from 'path';
 import * as url from 'url';
+import {Product} from './models/product';
+
 
 let win: BrowserWindow;
 
-app.on('ready', createWindow)
+app.on('ready', createWindow);
 
 app.on('activate', () => {
   if (win === null) {
@@ -23,8 +24,8 @@ function createWindow() {
           protocol: 'file:',
           slashes: true,
         })
-      )
-    
+      );
+      
       win.webContents.openDevTools()
     
       win.on('closed', () => {
@@ -32,14 +33,10 @@ function createWindow() {
       })
 }
 
-ipcMain.on('getFiles', (event, arg) => {
-  const files = fs.readdirSync(__dirname);
-  win.webContents.send('getFilesResponse', files);
-});
-
 /**
  * Products
  */
-ipcMain.on('getProduct', (event, arg) => {
-  
+ipcMain.on('message', (event, message) => {
+  let productModel = new Product;
+  productModel.all();
 });
