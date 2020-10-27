@@ -11,16 +11,13 @@ export class Product {
   }
 
   constructor() {
-    let mongodb = new Mongodb;
-    let mongoose = mongodb.getMongooseObject();
+    let mongoose = new Mongodb().getMongooseObject();
     let schema = new mongoose.Schema(this.schema);
     this.model = mongoose.model(this.modelName, schema);
   }
   
-  all () {
-    this.model.find(function (err, products) {
-      if (err) return console.error(err);
-      console.log(products);
-    })
+  async findById (id: number) {
+    let content = await this.model.find({id: id});
+    return content;
   }
 }

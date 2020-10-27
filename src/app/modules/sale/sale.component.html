@@ -1,38 +1,39 @@
 <div class="container-fluid h-100" id="bas-sale-container">
     <bas-header></bas-header>
-    <div class="row mt-5">
+    <bas-alert-danger [description]="descriptionError" [visible]=visibleError></bas-alert-danger>
+    <div class="row mt-5 div-form">
         <!-- Sale  -->
         <div role="main" class="col-md-8">
             <form>
                 <!-- Product Id and Description -->
                 <div class="form-group row">
                     <div class="col-4">
-                        <bas-input id="bas-product-id" type="text" label="Código do Produto" autofocus="true" (keyup.enter)="onEnter($event)"></bas-input>
+                        <bas-input id="bas-product-id" type="text" label="Código do Produto" (keyup.enter)="onEnter($event)"></bas-input>
                     </div>
-                    <div class="col-6">
-                        <bas-input id="bas-product-description" type="text" label="Descrição" disabled="true"></bas-input>
+                    <div class="col-6 ">
+                        <bas-input id="bas-product-description" type="text" label="Descrição" disabled="true" value="{{productDescripton}}"></bas-input>
                     </div>
                 </div>
                 <!-- End Product Id and Description -->
 
                 <!-- Qtd. Unit Value Total -->
-                <div class="form-group row">
-                    <div class="col-3">
-                        <bas-input id="bas-product-quantity" type="text" label="Quantidade"></bas-input>
+                <div class="form-group row ">
+                    <div class="col-3 ">
+                        <bas-input id="bas-product-quantity " type="text " label="Quantidade " value={{quantity}}></bas-input>
                     </div>
-                    <div class="col-4">
-                        <bas-input id="bas-product-unit-value" type="text" label="Valor da Unidade" disabled="true"></bas-input>
+                    <div class="col-4 ">
+                        <bas-input id="bas-product-unit-value " type="text " label="Valor da Unidade " disabled="true " value={{productPriceSale}}></bas-input>
                     </div>
-                    <div class="col-5">
-                        <bas-input id="bas-product-total-value" type="text" label="Valor Total" disabled="true"></bas-input>
+                    <div class="col-5 ">
+                        <bas-input id="bas-product-total-value " type="text " label="Valor Total " disabled="true "></bas-input>
                     </div>
                 </div>
                 <!-- End Qtd. Unit Value Total -->
 
                 <!-- Sub Total -->
-                <div class="form-group row">
-                    <div class="col-5">
-                        <bas-input id="bas-product-sub-total" type="text" label="Sub. Total" disabled="true"></bas-input>
+                <div class="form-group row ">
+                    <div class="col-5 ">
+                        <bas-input id="bas-product-sub-total " type="text " label="Sub. Total " disabled="true "></bas-input>
                     </div>
                 </div>
                 <!-- End Sub Total -->
@@ -41,7 +42,7 @@
         <!-- End Sale -->
 
         <!--  Coupon  -->
-        <aside role="complementary" class="col-md-4">
+        <aside role="complementary " class="col-md-4 ">
             <bas-coupon></bas-coupon>
         </aside>
         <!-- End Coupon  -->

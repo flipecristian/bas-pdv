@@ -10,4 +10,5 @@ export class InputComponent {
     @Input() label: string;
     @Input() autofocus: boolean = false;
     @Input() disabled: boolean = false;
+    @Input() value: string = '';
 }

@@ -1,7 +1,7 @@
 import { app, BrowserWindow, ipcMain } from 'electron';
+import { Message } from './message/message';
 import * as path from 'path';
 import * as url from 'url';
-import {Product} from './models/product';
 
 
 let win: BrowserWindow;
@@ -37,6 +37,9 @@ function createWindow() {
  * Products
  */
 ipcMain.on('message', (event, message) => {
-  let productModel = new Product;
-  productModel.all();
+  let processorMessage = new Message(message);
+  let response = processorMessage.process();
+  response
+    .then((data) => event.returnValue = data)
+    .catch((err) => console.error(err))
 });

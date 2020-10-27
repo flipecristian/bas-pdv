@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core'
 import { IpcRenderer } from 'electron'
+import { Product } from './product'
 
 @Injectable({
   providedIn: 'root',
@@ -19,8 +20,9 @@ export class ProductService {
     }
   }
 
-  getProduct(id: number) : void {
-    this.ipc.send('message', id);
+  getProduct(id: number) : Product | null {
+    let payload = {type: 'get_product', content: { id: id}};
+    return this.ipc.sendSync('message', payload);
   }
 
 }

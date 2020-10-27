@@ -1,3 +1,9 @@
 #bas-sale-container {
     background-color: silver;
+    min-height: 100%;
+    min-height: 100vh;
+}
+
+.div-form {
+    margin-top: 4rem!important;
 }
