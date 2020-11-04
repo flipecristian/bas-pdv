@@ -8,6 +8,7 @@ import { ProductService } from './services/product.service';
     styleUrls: ['sale.component.css']
 })
 export class SaleComponent implements AfterViewInit {
+    
     @ViewChild('productId') inputProductId : Component;
 
     /**
