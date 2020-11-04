@@ -35,7 +35,7 @@ export class SaleComponent implements AfterViewInit {
     
     ngAfterViewInit(): void {
         setTimeout(() => {
-            console.log((this.inputProductId as HTMLInputElement));
+            console.log((this.inputProductId));
         }, 3000);   
     }
 
@@ -63,8 +63,8 @@ export class SaleComponent implements AfterViewInit {
     }
 
     private setFocusOnlyQuantity() : void {
-        // this.autoFocusQuantity = true;
-        // this.autoFocusProductId = false;
+        this.autoFocusQuantity = true;
+        this.autoFocusProductId = false;
     }
 
     private fillForm(product: Product) : void {

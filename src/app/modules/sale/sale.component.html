@@ -8,7 +8,7 @@
                 <!-- Product Id and Description -->
                 <div class="form-group row">
                     <div class="col-4">
-                        <bas-input id="bas-product-id" type="text" label="Código do Produto" (keyup.enter)="onEnter($event)"></bas-input>
+                        <bas-input id="bas-product-id" type="text" label="Código do Produto" (keyup.enter)="onEnter($event)" #productId></bas-input>
                     </div>
                     <div class="col-6 ">
                         <bas-input id="bas-product-description" type="text" label="Descrição" disabled="true" value="{{productDescripton}}"></bas-input>
