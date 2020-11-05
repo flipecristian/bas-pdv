@@ -9,6 +9,9 @@ jobs:
             - name: Checkout code
               uses: actions/checkout@v2
 
+            - name: Code Coverage
+              run: ng test --no-watch --code-coverage
+
             - name: SonarCloud scan
               uses: sonarsource/sonarcloud-github-action@master
               env:
