@@ -32,10 +32,7 @@ jobs:
               run: npm install
 
             - name: Run tests
-              run: npm test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
-
-            - name: Code Coverage
-              run: ng test --no-watch --code-coverage
+              run: npm test -- --no-watch --no-progress --code-coverage --browsers=ChromeHeadlessCI
 
             - name: SonarCloud scan
               uses: sonarsource/sonarcloud-github-action@master
