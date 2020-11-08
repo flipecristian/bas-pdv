@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { Product } from './services/product';
 import { ProductService } from './services/product.service';
 
@@ -8,64 +8,81 @@ import { ProductService } from './services/product.service';
     styleUrls: ['sale.component.css']
 })
 export class SaleComponent implements AfterViewInit {
-    
-    @ViewChild('productId') inputProductId : Component;
 
     /**
      * Coupon
      */
-    coupon: Array<Product> = [];
+    private coupon: Array<Product> = [];
 
     /**
      * Product
      */
-    productId: number = 0;
-    productDescripton: string = '';
-    productPriceSale: number = 0;
+    private productId: number = 0;
+    private productDescripton: string = '';
+    private productPriceSale: number = 0;
+
+    /**
+     * Sale
+     */
+    private totalValue: number = 0.00;
+    private subTotal: number = 0.00
 
     /**
      * Events
      */
-    descriptionError: any = '';
-    visibleError: boolean = false;
-    countOnEnterClick: number = 0;
-    autoFocusProductId: boolean = true;
-    autoFocusQuantity: boolean = false;
+    private descriptionError: any = '';
+    private visibleError: boolean = false;
+    private autoFocusProductId: boolean = true;
+    private autoFocusQuantity: boolean = false;
+
+    /**
+     * Produto corrente (que está sendo vendido nomento).
+     */
+    private currentProduct: Product;
 
     constructor(private productService: ProductService) {}
     
     ngAfterViewInit(): void {
         setTimeout(() => {
-            console.log((this.inputProductId));
+            let input = document.getElementById('bas-product-id');
+            input.focus();
+            console.log('foi')
         }, 3000);   
     }
 
-    onEnter(event: any) : void {
-        this.setFocusOnlyQuantity();
+    /**
+     * Event onEnter do campo ID do Produto
+     * @param event 
+     */
+    onEnterProductId(event: any) : void {
         let productId = event.target.value;
         let product = this.productService.getProduct(productId)[0];
-
         if (!product) {
             this.displayError('Produto não localizado');
-            this.setFocusOnlyProductId();
             return;
         }
+        this.currentProduct = product;
+        this.fillForm(this.currentProduct);
+        this.setFocusOnlyQuantity();
+    }
 
-        if (!this.isSecondClickOnEnter()) {
-            this.setFocusOnlyQuantity();
-            this.fillForm(product);
-            return;
-        }
-
-        this.setFocusOnlyProductId();
+    onEnterQuantity(event: any) : void {
+        let quantity = parseInt(event.target.value);
+        this.currentProduct.quantity = quantity;
+        this.totalValue = this.currentProduct.quantity * this.currentProduct.price_sale;
+        this.subTotal += this.totalValue;
+        this.coupon.push(this.currentProduct);
+        this.setFocusOnlyProductId(); 
     }
 
     private setFocusOnlyProductId() : void {
+        let inputElement = document.getElementById('bas-product-id_ic');
+        inputElement.focus();
     }
 
     private setFocusOnlyQuantity() : void {
-        this.autoFocusQuantity = true;
-        this.autoFocusProductId = false;
+        let inputElement = document.getElementById('bas-product-quantity_ic');
+        inputElement.focus();
     }
 
     private fillForm(product: Product) : void {
@@ -78,14 +95,5 @@ export class SaleComponent implements AfterViewInit {
         this.descriptionError = message;
         this.visibleError = true;
         setTimeout(() => this.visibleError = false, 2000);
-    }
-
-    private isSecondClickOnEnter() : boolean {
-        this.countOnEnterClick++;
-        if (this.countOnEnterClick == 2) {
-            this.countOnEnterClick = 0;
-            return true;
-        }
-        return false;
     }
 }
