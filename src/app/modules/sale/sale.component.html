@@ -8,7 +8,7 @@
                 <!-- Product Id and Description -->
                 <div class="form-group row">
                     <div class="col-4">
-                        <bas-input id="bas-product-id" type="text" label="Código do Produto" (keyup.enter)="onEnter($event)" #productId></bas-input>
+                        <bas-input id="bas-product-id" type="text" label="Código do Produto" (keyup.enter)="onEnterProductId($event)"></bas-input>
                     </div>
                     <div class="col-6 ">
                         <bas-input id="bas-product-description" type="text" label="Descrição" disabled="true" value="{{productDescripton}}"></bas-input>
@@ -17,23 +17,23 @@
                 <!-- End Product Id and Description -->
 
                 <!-- Qtd. Unit Value Total -->
-                <div class="form-group row ">
+                <div class="form-group row">
                     <div class="col-3 ">
-                        <bas-input id="bas-product-quantity " type="text " label="Quantidade " value={{quantity}}></bas-input>
+                        <bas-input id="bas-product-quantity" type="text" label="Quantidade" value={{quantity}} (keyup.enter)="onEnterQuantity($event)"></bas-input>
                     </div>
                     <div class="col-4 ">
-                        <bas-input id="bas-product-unit-value " type="text " label="Valor da Unidade " disabled="true " value={{productPriceSale}}></bas-input>
+                        <bas-input id="bas-product-unit-value" type="text" label="Valor da Unidade" disabled="true" value={{productPriceSale}}></bas-input>
                     </div>
                     <div class="col-5 ">
-                        <bas-input id="bas-product-total-value " type="text " label="Valor Total " disabled="true "></bas-input>
+                        <bas-input id="bas-product-total-value" type="text" label="Valor Total" disabled="true" value={{totalValue}}></bas-input>
                     </div>
                 </div>
                 <!-- End Qtd. Unit Value Total -->
 
                 <!-- Sub Total -->
-                <div class="form-group row ">
+                <div class="form-group row">
                     <div class="col-5 ">
-                        <bas-input id="bas-product-sub-total " type="text " label="Sub. Total " disabled="true "></bas-input>
+                        <bas-input id="bas-product-sub-total" type="text" label="Sub. Total" disabled="true" value={{subTotal}}></bas-input>
                     </div>
                 </div>
                 <!-- End Sub Total -->
@@ -42,8 +42,8 @@
         <!-- End Sale -->
 
         <!--  Coupon  -->
-        <aside role="complementary " class="col-md-4 ">
-            <bas-coupon></bas-coupon>
+        <aside role="complementary" class="col-md-4 ">
+            <bas-coupon [coupon]=coupon></bas-coupon>
         </aside>
         <!-- End Coupon  -->
     </div>
