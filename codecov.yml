@@ -1,6 +1,6 @@
 flags:
   unit:
     paths:
-      - ./src/app
-      - unit_2.py
+      - src/app/app.component.spec.ts
+      - src/app/shared/input/input.component.spec.ts
     carryforward: true
