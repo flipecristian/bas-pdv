@@ -3,4 +3,9 @@ flags:
     paths:
       - src/app/app.component.spec.ts
       - src/app/shared/input/input.component.spec.ts
+      - src/app/modules/menu/menu.component.spec.ts
+      - src/app/modules/sale/coupon/coupon.component.spec.ts
+      - src/app/modules/sale/header/header.component.spec.ts
+      - src/app/modules/sale/services/product.service.spec.ts
+      - src/app/modules/sale/sale.component.spec.ts
     carryforward: true
