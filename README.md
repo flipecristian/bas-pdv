@@ -5,18 +5,21 @@
 This project is an soluction point of sale for small businnes
 
 
-# Running the project Angular
-
-Step 1: Inside from root folder execute. docker-compose up -d
-
-Step 2: Open the browser http://localhost:4200
-
-
-# Running the project Angular + Electron
+# Running the project
 
 Requires:
- - NodeJS
- - Angualar cli
+- Docker && Docker Compose
+- NodeJS
+- Angualar cli
 
-Step 1: Inside from root folder execute. npm run electron.
+Step 1: clone the project in your localhost.
+
+Step 2: Go to in project root directory
+
+Step 2: ``npm run install``
+
+Setp 3: ``docker-compose up -d``
+
+Step 4: `npm run electron``
+
 
