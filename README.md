@@ -20,6 +20,6 @@ Step 2: ``npm run install``
 
 Setp 3: ``docker-compose up -d``
 
-Step 4: `npm run electron``
+Step 4: ``npm run electron``
 
 
