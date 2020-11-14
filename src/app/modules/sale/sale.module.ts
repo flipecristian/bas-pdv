@@ -5,6 +5,7 @@ import { SaleComponent } from './sale.component';
 import { CouponComponent } from './coupon/coupon.component';
 import { HeaderComponent } from './header/header.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -14,7 +15,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
     ],
     imports: [
         CommonModule,
-        SharedModule
+        SharedModule,
+        FormsModule, 
+        ReactiveFormsModule
     ]
 })
 export class SaleModule { }

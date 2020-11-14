@@ -33,7 +33,7 @@ jobs:
 
             - name: Run tests
               run: npm test -- --no-watch --no-progress --code-coverage --browsers=ChromeHeadlessCI
-            
+
             - name: Upload code coverage report to workflow as an artifact
               uses: actions/upload-artifact@v2
               with:
