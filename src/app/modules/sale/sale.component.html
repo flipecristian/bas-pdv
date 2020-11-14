@@ -4,36 +4,42 @@
     <div class="row mt-5 div-form">
         <!-- Sale  -->
         <div role="main" class="col-md-8">
-            <form>
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
                 <!-- Product Id and Description -->
                 <div class="form-group row">
                     <div class="col-4">
-                        <bas-input id="bas-product-id" type="text" label="Código do Produto" (keyup.enter)="onEnterProductId($event)"></bas-input>
+                        <label for="bas-product-id"> Código do Produto </label>
+                        <input id="bas-product-id" class="form-control input-sm" type="text" (keyup.enter)="onEnterProductId($event)" formControlName="product_id">
                     </div>
-                    <div class="col-6 ">
-                        <bas-input id="bas-product-description" type="text" label="Descrição" disabled="true" value="{{productDescripton}}"></bas-input>
+                    <div class="col-4">
+                        <label for="bas-product-description"> Descrição </label>
+                        <input id="bas-product-description" class="form-control input-sm" type="text" formControlName="description">
                     </div>
                 </div>
                 <!-- End Product Id and Description -->
 
                 <!-- Qtd. Unit Value Total -->
                 <div class="form-group row">
-                    <div class="col-3 ">
-                        <bas-input id="bas-product-quantity" type="text" label="Quantidade" value={{quantity}} (keyup.enter)="onEnterQuantity($event)"></bas-input>
+                    <div class="col-4">
+                        <label for="bas-product-quantity"> Quantidade </label>
+                        <input id="bas-product-quantity" class="form-control input-sm" type="text" (keyup.enter)="onEnterQuantity($event.target.value)" formControlName="quantity">
                     </div>
                     <div class="col-4 ">
-                        <bas-input id="bas-product-unit-value" type="text" label="Valor da Unidade" disabled="true" value={{productPriceSale}}></bas-input>
+                        <label for="bas-product-unit-value"> Valor Unitário </label>
+                        <input id="bas-product-unit-value" class="form-control input-sm" type="text" formControlName="unit_price">
                     </div>
-                    <div class="col-5 ">
-                        <bas-input id="bas-product-total-value" type="text" label="Valor Total" disabled="true" value={{totalValue}}></bas-input>
+                    <div class="col-4 ">
+                        <label for="bas-product-total-value"> Valor Total </label>
+                        <input id="bas-product-total-value" class="form-control input-sm" type="text" formControlName="total_value">
                     </div>
                 </div>
                 <!-- End Qtd. Unit Value Total -->
 
                 <!-- Sub Total -->
-                <div class="form-group row">
-                    <div class="col-5 ">
-                        <bas-input id="bas-product-sub-total" type="text" label="Sub. Total" disabled="true" value={{subTotal}}></bas-input>
+                <div class="form-group row ">
+                    <div class="col-4 ">
+                        <label for="bas-product-total-sub"> Valor Total </label>
+                        <input id="bas-product-total-sub" class="form-control input-sm" type="text" formControlName="total_sub">
                     </div>
                 </div>
                 <!-- End Sub Total -->
@@ -42,7 +48,7 @@
         <!-- End Sale -->
 
         <!--  Coupon  -->
-        <aside role="complementary" class="col-md-4 ">
+        <aside role="complementary" class="col-md-4">
             <bas-coupon [coupon]=coupon></bas-coupon>
         </aside>
         <!-- End Coupon  -->

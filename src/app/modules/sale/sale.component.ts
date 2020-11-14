@@ -1,4 +1,5 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Product } from './services/product';
 import { ProductService } from './services/product.service';
 
@@ -7,93 +8,109 @@ import { ProductService } from './services/product.service';
     templateUrl: 'sale.component.html',
     styleUrls: ['sale.component.css']
 })
-export class SaleComponent implements AfterViewInit {
+export class SaleComponent {
+    /**
+     * Product
+     */
+    public currentProduct: Product; // Produto corrente (que está sendo vendido nomento)
+    public totalValueProduct: number;
+    public totalSub: number
 
     /**
      * Coupon
      */
-    private coupon: Array<Product> = [];
-
-    /**
-     * Product
-     */
-    private productId: number = 0;
-    private productDescripton: string = '';
-    private productPriceSale: number = 0;
-
-    /**
-     * Sale
-     */
-    private totalValue: number = 0.00;
-    private subTotal: number = 0.00
+    public coupon: Array<Product> = [];
 
     /**
      * Events
      */
-    private descriptionError: any = '';
-    private visibleError: boolean = false;
-    private autoFocusProductId: boolean = true;
-    private autoFocusQuantity: boolean = false;
+    public descriptionError: any = '';
+    public visibleError: boolean = false;
+
+    public form: FormGroup;
+
+
+    constructor(private productService: ProductService, private formBuilder: FormBuilder) {
+        this.form = this.formBuilder.group({
+            product_id: ['', Validators.required],
+            description: [''],
+            unit_price: [''],
+            quantity: ['', Validators.required],
+            total_value: [''],
+            total_sub: ['']
+        });
+    }
 
     /**
-     * Produto corrente (que está sendo vendido nomento).
+     * Display error alert.
+     * @param message 
      */
-    private currentProduct: Product;
-
-    constructor(private productService: ProductService) {}
-    
-    ngAfterViewInit(): void {
-        setTimeout(() => {
-            let input = document.getElementById('bas-product-id');
-            input.focus();
-            console.log('foi')
-        }, 3000);   
+    private displayError(message: string) : void {
+        this.descriptionError = message;
+        this.visibleError = true;
+        setTimeout(() => this.visibleError = false, 2000);
     }
+
+    /**
+     * Set focus on field product id.
+     */
+    public setFocusOnlyProductId() : void {
+        let inputElement = document.getElementById('bas-product-id');
+        inputElement.focus();
+    }
+
+    /**
+     * Set focus on field.
+     */
+    private setFocusOnlyQuantity() : void {
+        let inputElement : HTMLInputElement = <HTMLInputElement> document.getElementById('bas-product-quantity');
+        inputElement.focus();
+        inputElement.select();
+    }
+
+    /**
+     * Fill product form.
+     * @param product 
+     */
+    private fillForm(product: Product) : void {
+        this.form.controls['description'].setValue(product.description);   
+        this.form.controls['quantity'].setValue(1);
+        this.form.controls['unit_price'].setValue(product.price_sale);
+        this.form.controls['total_value'].setValue(product.price_sale);
+        this.form.controls['total_sub'].setValue(product.price_sale);
+    }
+
+    private clearForm() : void {
+        this.form.reset('');
+    }
+
+    // Events
 
     /**
      * Event onEnter do campo ID do Produto
      * @param event 
      */
-    onEnterProductId(event: any) : void {
-        let productId = event.target.value;
-        let product = this.productService.getProduct(productId)[0];
+    public onEnterProductId(productId: number) : void {
+        let product = this.productService.getProduct(productId);
         if (!product) {
             this.displayError('Produto não localizado');
-            return;
+            return null;
         }
         this.currentProduct = product;
         this.fillForm(this.currentProduct);
         this.setFocusOnlyQuantity();
     }
 
-    onEnterQuantity(event: any) : void {
+    /**
+     * @param event 
+     */
+    public onEnterQuantity(event: any) : void {
         let quantity = parseInt(event.target.value);
         this.currentProduct.quantity = quantity;
-        this.totalValue = this.currentProduct.quantity * this.currentProduct.price_sale;
-        this.subTotal += this.totalValue;
+        this.totalValueProduct = this.currentProduct.quantity * this.currentProduct.price_sale;
+        this.totalSub += this.totalValueProduct;
         this.coupon.push(this.currentProduct);
+        this.clearForm();
         this.setFocusOnlyProductId(); 
-    }
-
-    private setFocusOnlyProductId() : void {
-        let inputElement = document.getElementById('bas-product-id_ic');
-        inputElement.focus();
-    }
-
-    private setFocusOnlyQuantity() : void {
-        let inputElement = document.getElementById('bas-product-quantity_ic');
-        inputElement.focus();
-    }
-
-    private fillForm(product: Product) : void {
-        this.productId = product.id;
-        this.productDescripton = product.description;
-        this.productPriceSale = product.price_sale
-    }
-
-    private displayError(message: string) : void {
-        this.descriptionError = message;
-        this.visibleError = true;
-        setTimeout(() => this.visibleError = false, 2000);
     }
 }
