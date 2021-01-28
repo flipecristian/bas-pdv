@@ -1,22 +1,49 @@
 <div class="container-fluid h-100" id="bas-sale-container">
-    <bas-header></bas-header>
+    <!-- Header -->
+    <header class="row p-1">
+        <div class="col-2">
+            <button type="button" class="btn btn-primary btn-md btn-block">Abertura de Caixa (F1)</button>
+        </div>
+        <div class="col-2">
+            <button type="button" class="btn btn-primary btn-md btn-block">Fechamento de Caixa (F2)</button>
+        </div>
+        <div class="col-2">
+            <button type="button" class="btn btn-primary btn-md btn-block">Sangria (F3)</button>
+        </div>
+        <div class="col-2">
+            <button type="button" class="btn btn-primary btn-md btn-block">Venda Balcão (F4)</button>
+        </div>
+        <div class="col-2">
+            <button type="button" class="btn btn-primary btn-md btn-block">Venda Delivery (F5)</button>
+        </div>
+        <div class="col-2">
+            <button type="button" class="btn btn-primary btn-md btn-block" (click)="finalizeSale()">Finalizar Venda (F6)</button>
+        </div>
+    </header>
+    <!-- End header -->
+
     <bas-alert-danger [description]="descriptionError" [visible]=visibleError></bas-alert-danger>
     <div class="row mt-5 div-form">
         <!-- Sale  -->
         <div role="main" class="col-md-8">
             <form [formGroup]="form" (ngSubmit)="onSubmit()">
-                <!-- Product Id and Description -->
+                <!-- Product Id -->
                 <div class="form-group row">
                     <div class="col-4">
                         <label for="bas-product-id"> Código do Produto </label>
-                        <input id="bas-product-id" class="form-control input-sm" type="text" (keyup.enter)="onEnterProductId($event)" formControlName="product_id">
+                        <input id="bas-product-id" class="form-control input-sm" type="text" (keyup.enter)="onEnterProductId($event.target.value)" formControlName="product_id">
                     </div>
-                    <div class="col-4">
+                </div>
+                <!-- End Product Id -->
+
+                <!-- Description -->
+                <div class="form-group row">
+                    <div class="col-12">
                         <label for="bas-product-description"> Descrição </label>
                         <input id="bas-product-description" class="form-control input-sm" type="text" formControlName="description">
                     </div>
                 </div>
-                <!-- End Product Id and Description -->
+                <!-- End Description -->
 
                 <!-- Qtd. Unit Value Total -->
                 <div class="form-group row">

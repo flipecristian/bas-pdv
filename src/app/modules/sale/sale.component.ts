@@ -30,7 +30,10 @@ export class SaleComponent {
     public form: FormGroup;
 
 
-    constructor(private productService: ProductService, private formBuilder: FormBuilder) {
+    constructor(
+        private productService: ProductService, 
+        private formBuilder: FormBuilder
+    ) {
         this.form = this.formBuilder.group({
             product_id: ['', Validators.required],
             description: [''],
@@ -91,7 +94,7 @@ export class SaleComponent {
      * @param event 
      */
     public onEnterProductId(productId: number) : void {
-        let product = this.productService.getProduct(productId);
+        let product = this.productService.getProduct(productId)[0];
         if (!product) {
             this.displayError('Produto não localizado');
             return null;
@@ -104,8 +107,7 @@ export class SaleComponent {
     /**
      * @param event 
      */
-    public onEnterQuantity(event: any) : void {
-        let quantity = parseInt(event.target.value);
+    public onEnterQuantity(quantity: number) : void {
         this.currentProduct.quantity = quantity;
         this.totalValueProduct = this.currentProduct.quantity * this.currentProduct.price_sale;
         this.totalSub += this.totalValueProduct;
@@ -113,4 +115,10 @@ export class SaleComponent {
         this.clearForm();
         this.setFocusOnlyProductId(); 
     }
+
+    public finalizeSale() : void {
+        console.log("Está por aqui");
+        this.productService.finalizeSale(this.coupon);
+    }
+
 }

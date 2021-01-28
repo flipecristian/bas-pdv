@@ -20,8 +20,19 @@ export class ProductService {
     }
   }
 
+  /**
+   * @param id 
+   */
   getProduct(id: number) : Product | null {
     let payload = {type: 'get_product', content: { id: id}};
+    return this.ipc.sendSync('message', payload);
+  }
+
+  /**
+   * @param cupon 
+   */
+  finalizeSale(cupon: object) : boolean {
+    let payload = {type: 'finalize_sale', content: cupon};
     return this.ipc.sendSync('message', payload);
   }
 
