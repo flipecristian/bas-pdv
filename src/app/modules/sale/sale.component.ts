@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Product } from './services/product';
 import { ProductService } from './services/product.service';
-import { debounceTime } from 'rxjs/operators';
 
 @Component({
     selector: 'bas-sale',
