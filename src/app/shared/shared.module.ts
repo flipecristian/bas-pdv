@@ -2,17 +2,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { InputComponent } from './input/input.component';
-import { AlertDangerComponent } from './alert/alert.danger.component';
+import { AlertModule } from './alert/alert.module';
 
 @NgModule({
     declarations: [
-        InputComponent,
-        AlertDangerComponent
+        InputComponent
     ],
     imports: [CommonModule],
     exports: [
         InputComponent,
-        AlertDangerComponent
+        AlertModule
     ]
 })
 export class SharedModule { }
