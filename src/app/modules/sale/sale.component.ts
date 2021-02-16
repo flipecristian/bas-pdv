@@ -109,10 +109,6 @@ export class SaleComponent {
 
     // Events
 
-    /**
-     * Event onEnter do campo ID do Produto
-     * @param event 
-     */
     onEnterProductId(productId: number) : void {
         let product = this.productService.getProduct(productId)[0];
         if (!product) {
@@ -124,10 +120,6 @@ export class SaleComponent {
         this.setFocusOnlyQuantity();
     }
 
-    /**
-     * Event: on enter quantity field
-     * @param event 
-     */
     onEnterQuantity(quantity: number) : void {
         this.currentProduct.quantity = quantity;
         this.totalValueProduct = this.currentProduct.quantity * this.currentProduct.price_sale;
@@ -141,10 +133,6 @@ export class SaleComponent {
         this.setFocusOnlyProductId(); 
     }
 
-    /**
-     * Event: onchange quantity field.
-     * @param quantity 
-     */
     onChangeQuantity(quantity: number) : void {
         clearTimeout(this.timer);
         this.timer = setTimeout(() => {
