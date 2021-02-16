@@ -23,6 +23,9 @@
     <!-- End header -->
 
     <bas-alert-danger [description]="descriptionError" [visible]=visibleError></bas-alert-danger>
+
+    <bas-alert-success [description]="descriptionSuccess" [visible]=visibleSuccess></bas-alert-success>
+
     <div class="row mt-5 div-form">
         <!-- Sale  -->
         <div role="main" class="col-md-8">
@@ -49,23 +52,23 @@
                 <div class="form-group row">
                     <div class="col-4">
                         <label for="bas-product-quantity"> Quantidade </label>
-                        <input id="bas-product-quantity" class="form-control input-sm" type="text" (keyup.enter)="onEnterQuantity($event.target.value)" formControlName="quantity">
+                        <input id="bas-product-quantity" class="form-control input-sm" type="text" (keyup.enter)="onEnterQuantity($event.target.value)" (input)="onChangeQuantity($event.target.value)" formControlName="quantity">
                     </div>
                     <div class="col-4 ">
                         <label for="bas-product-unit-value"> Valor Unitário </label>
                         <input id="bas-product-unit-value" class="form-control input-sm" type="text" formControlName="unit_price">
                     </div>
                     <div class="col-4 ">
-                        <label for="bas-product-total-value"> Valor Total </label>
+                        <label for="bas-product-total-value"> Total </label>
                         <input id="bas-product-total-value" class="form-control input-sm" type="text" formControlName="total_value">
                     </div>
                 </div>
                 <!-- End Qtd. Unit Value Total -->
 
                 <!-- Sub Total -->
-                <div class="form-group row ">
+                <div class="form-group row">
                     <div class="col-4 ">
-                        <label for="bas-product-total-sub"> Valor Total </label>
+                        <label for="bas-product-total-sub"> Sub. Total </label>
                         <input id="bas-product-total-sub" class="form-control input-sm" type="text" formControlName="total_sub">
                     </div>
                 </div>

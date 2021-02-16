@@ -31,8 +31,12 @@ export class ProductService {
   /**
    * @param cupon 
    */
-  finalizeSale(cupon: object) : boolean {
-    let payload = {type: 'finalize_sale', content: cupon};
+  finalizeSale(sale: any) : boolean {
+    let content = {
+      cupon: sale.cupon,
+      total_value: sale.total_value
+    }
+    let payload = {type: 'finalize_sale', content: content};
     return this.ipc.sendSync('message', payload);
   }
 

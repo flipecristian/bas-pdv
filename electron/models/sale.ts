@@ -15,11 +15,10 @@ export class Sale {
     this.model = mongoose.model(this.modelName, schema);
   }
   
-  async finalizeSale (coupon: any) {
-    console.log("cupon", coupon);
-    let content = await this.model.create({
-        items: coupon
+  async finalizeSale (sale: any) {
+    return await this.model.create({
+        total_value: sale.total_value,
+        items: sale.cupon
     });
-    return content;
   }
 }
