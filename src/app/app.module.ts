@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app.routing.module';
 import { SaleModule } from './modules/sale/sale.module';
 import { MenuModule } from './modules/menu/menu.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { OpeningCashiersModule } from './modules/opening_cashiers/opening_cashiers.module';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     SaleModule,
     MenuModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    OpeningCashiersModule
   ],
   providers: [],
   bootstrap: [AppComponent]
