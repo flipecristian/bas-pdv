@@ -1,0 +1,26 @@
+<div class="container-fluid h-100" id="container-main">
+    <div class="container h-100">
+
+        <bas-alert-danger [description]="descriptionError" [visible]=visibleError></bas-alert-danger>
+
+        <bas-alert-success [description]="descriptionSuccess" [visible]=visibleSuccess></bas-alert-success>
+
+        <div class="row h-100 justify-content-center align-items-center">
+            <form [formGroup]="form" class="form-inline" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="number_cashier" class="sr-only">Número do Caixa</label>
+                    <input type="text" class="form-control" id="number_cashier" formControlName="number_cashier">
+                </div>
+                <div class="form-group">
+                    <label for="login" class="sr-only">Login</label>
+                    <input type="text" class="form-control" id="login" placeholder="name@example.com" formControlName="login">
+                </div>
+                <div class="form-group">
+                    <label for="password" class="sr-only">Senha</label>
+                    <input type="password" class="form-control" id="password" placeholder="1234" formControlName="password">
+                </div>
+                <button type="submit" class="btn btn-success">Entrar</button>
+            </form>
+        </div>
+    </div>
+</div>

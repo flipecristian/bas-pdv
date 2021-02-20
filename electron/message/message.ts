@@ -1,6 +1,8 @@
 import { ProductController } from '../controller/product.controler';
 import { SaleController } from '../controller/sale.controler';
+import { UserController } from '../controller/user.controler';
 import { ProductEnum } from './productEnum';
+import { UserEnum } from './userEnum';
 
 export class Message {
     private type : string;
@@ -28,6 +30,11 @@ export class Message {
             case ProductEnum.FINALIZE_SALE:
                 let saleController = new SaleController;
                 result = saleController.finalizeSale(this.content);
+            break;
+            case UserEnum.OPERATION_LOGIN:
+                let userController = new UserController;
+                result = userController.login(this.content);
+            break;
         }
         return result;
     }

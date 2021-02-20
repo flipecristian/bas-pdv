@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app.routing.module';
 import { SaleModule } from './modules/sale/sale.module';
 import { MenuModule } from './modules/menu/menu.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { OpeningCashiersModule } from './modules/opening_cashiers/opening_cashiers.module';
+import { OpeningCashierModule } from './modules/opening_cashier/opening_cashier.module';
 
 
 @NgModule({
@@ -19,7 +19,7 @@ import { OpeningCashiersModule } from './modules/opening_cashiers/opening_cashie
     SaleModule,
     MenuModule,
     ReactiveFormsModule,
-    OpeningCashiersModule
+    OpeningCashierModule
   ],
   providers: [],
   bootstrap: [AppComponent]
